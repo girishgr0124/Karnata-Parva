@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Patient Health Dashboard</h1>
+        <div class="row mt-4">
+            <div class="col-md-6 mx-auto">
+                <h3>Current Vitals</h3>
+                <ul class="list-group">
+                    <li class="list-group-item" id="bloodPressure">Blood Pressure: {{ vitals['blood_pressure'] }}</li>
+                    <li class="list-group-item" id="glucoseLevel">Glucose Level: {{ vitals['glucose_level'] }}</li>
+                    <li class="list-group-item" id="heartRate">Heart Rate: {{ vitals['heart_rate'] }}</li>
+                    <li class="list-group-item" id="weight">Weight: {{ vitals['weight'] }}</li>
+                </ul>
+                <a href="/" class="btn btn-secondary mt-4">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Real-Time Monitoring Script -->
+    <script>
+        // Function to simulate updating vitals data
+        function updateVitals() {
+            // Simulate new vitals data (replace with real API/data fetching logic)
+            let vitals = {
+                "blood_pressure": Math.floor(Math.random() * 40) + 100 + "/" + Math.floor(Math.random() * 30) + 60,
+                "glucose_level": Math.floor(Math.random() * 50) + 80 + " mg/dL",
+                "heart_rate": Math.floor(Math.random() * 40) + 60 + " bpm",
+                "weight": Math.floor(Math.random() * 20) + 60 + " kg"
+            };
+
+            // Update the displayed vitals in the UI
+            document.getElementById('bloodPressure').innerText = "Blood Pressure: " + vitals.blood_pressure;
+            document.getElementById('glucoseLevel').innerText = "Glucose Level: " + vitals.glucose_level;
+            document.getElementById('heartRate').innerText = "Heart Rate: " + vitals.heart_rate;
+            document.getElementById('weight').innerText = "Weight: " + vitals.weight;
+        }
+
+        // Update vitals every 5 seconds (5000 milliseconds)
+        setInterval(updateVitals, 5000);
+    </script>
+</body>
+</html>
